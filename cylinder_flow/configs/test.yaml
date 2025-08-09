@@ -1,0 +1,48 @@
+# random seed
+random_seed: 66
+
+# data precision
+precision: float32
+
+# super parameters
+dataset_start: 0
+dataset_used: 9
+time_start: 0
+time_used: 2000
+te_window_size: 2000
+
+# network architecture
+integral: 2
+encoder_config:
+  node_encoder_layers: [8, 32, 64, 128]
+  edge_encoder_layers: [5, 32, 64, 128]
+
+mpnn_block_config:
+  mpnn_layers:
+    - [384, 128, 128, 128, 128]
+    - [256, 128, 128, 128, 128]
+  mpnn_num: 5
+
+decoder_config:
+  node_decoder_layers: [128, 64, 32, 2]
+
+laplace_block_config:
+  in_dim: 4
+  h_dim: 24
+  out_dim: 2
+
+# experiment name and path
+experiment_name: 106
+continuous_train: false
+ckpt_path_tr: /mnt/DEV_B/zengbocheng/PhyMPGN/ckpts/ckpt-{}-tr
+ckpt_path_val: /mnt/DEV_B/zengbocheng/PhyMPGN/ckpts/ckpt-{}-val
+work_path: /mnt/DEV_B/zengbocheng/PhyMPGN
+
+# data path
+data_root_dir: /mnt/DEV_B/zengbocheng/PhyMPGN/data/2d_cf
+te_processed_file: te_data.pt
+te_raw_data: test_cf_9x2000x1598x2.h5
+
+# log
+log_file: /mnt/DEV_B/zengbocheng/PhyMPGN/logs/out-{}.log
+log_dir: /mnt/DEV_B/zengbocheng/PhyMPGN/runs/expr_{}
